@@ -1,0 +1,2 @@
+yaml file should create a release upon PR merge
+it also should revert the PR .. on certain condition
