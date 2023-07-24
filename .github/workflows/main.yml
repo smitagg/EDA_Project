@@ -1,4 +1,4 @@
-Name: Create release tag
+name: Create release tag
 on:
   pull_request:
     types:
@@ -7,9 +7,6 @@ on:
 
 
 permissions: write-all
-name: Create Release
-
-
 jobs:
     if_merged:
       if: github.event.pull_request.merged == true
