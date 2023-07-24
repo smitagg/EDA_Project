@@ -1,0 +1,37 @@
+Name: Create release tag
+on:
+  pull_request:
+    types:
+      - closed
+
+
+
+permissions: write-all
+name: Create Release
+
+
+jobs:
+    if_merged:
+      if: github.event.pull_request.merged == true
+      name: Create Release
+      runs-on: ubuntu-latest
+      steps:
+        - run: |
+            echo The PR was merged
+            echo pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+            
+        - name: Checkout code
+          uses: actions/checkout@master
+          
+        - name: Get current date
+          id: date
+          run: echo "::set-output name=date::$(date +'%d%m%Y')"
+          
+        - name: Tag snapshot
+          uses: tvdias/github-tagger@v0.0.1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            tag: R3_${{ steps.date.outputs.date }}
+      
+          
+          
