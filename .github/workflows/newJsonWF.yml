@@ -19,4 +19,4 @@ jobs:
       - name: print details                       
         run: |
           echo ${{ fromJSON(needs.job1.outputs.matrix) }}
-          echo ${{ needs.job1.outputs.matrix }}
+          echo ${{ toJSON(needs.job1.outputs.matrix) }}
