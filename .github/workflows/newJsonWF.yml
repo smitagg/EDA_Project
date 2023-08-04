@@ -17,4 +17,6 @@ jobs:
 
     steps:
       - name: print details                       
-        run: echo ${{ fromJSON(needs.job1.outputs.matrix) }}
+        run: |
+          echo ${{ fromJSON(needs.job1.outputs.matrix) }}
+          echo ${{ needs.job1.outputs.matrix }}
