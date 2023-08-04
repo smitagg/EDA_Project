@@ -1,17 +1,15 @@
-name: Deployment
-
-on:
-  workflow_dispatch:
-
+name: print
+on: workflow_dispatch
 env:
-  TAGS: '{"costCenter":"ABCD", "owner":"XYZ"}'
-
+  continue: true
+  time: 3
 jobs:
-  create-resource-groups:
+  job1:
     runs-on: ubuntu-latest
-
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Check Out Repository
-      run: echo $TAGS
-      
+      - continue-on-error: ${{ fromJSON(env.continue) }}
+        timeout-minutes: ${{ fromJSON(env.time) }}
+        run: |
+          echo continue-on-error
+          echo timeout-minutes
+          
