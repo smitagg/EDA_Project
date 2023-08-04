@@ -4,7 +4,7 @@ import argparse
 print ('Number of arguments:', len(sys.argv), 'arguments.')
 print ('Argument List:', str(sys.argv))
 
-parser = parser.argparse.ArgumentParser()
+parser = argparse.ArgumentParser()
 
 parser.add_argument('--myArg1')
 parser.add_argument('--myArg2')
