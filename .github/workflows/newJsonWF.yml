@@ -1,1 +1,17 @@
+name: Deployment
 
+on:
+  workflow_dispatch:
+
+env:
+  TAGS: '{"costCenter":"ABCD", "owner":"XYZ"}'
+
+jobs:
+  create-resource-groups:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Check Out Repository
+      run: echo $TAGS
+      
