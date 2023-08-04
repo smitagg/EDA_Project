@@ -16,7 +16,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print details
-        env:
-          matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}                        
+      - name: print details                       
         run: echo ${{ fromJSON(needs.job1.outputs.matrix) }}
