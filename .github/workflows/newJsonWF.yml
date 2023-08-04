@@ -28,4 +28,4 @@ jobs:
           echo ${{ toJSON(needs.job1.outputs.matrix) }}
           
       - name: run script                       
-        run: python src/createTask.py --myArg1=${{ toJSON(needs.job1.outputs.matrix) }} --myArg2=${{ toJSON(inputs.inVar) }}
+        run: python src/createTask.py --myArg1=${{ toJSON(inputs.inVar) }} --myArg2=${{ toJSON(inputs.inVar) }}
