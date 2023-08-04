@@ -17,4 +17,5 @@ jobs:
     env:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
-      - run: echo ${{ env.matrix }}
+      - name: print details
+        run: echo ${{ env.matrix }}
