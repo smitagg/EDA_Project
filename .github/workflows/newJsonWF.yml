@@ -19,4 +19,4 @@ jobs:
       - name: print details
         env:
           matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}                        
-        run: echo ${{ env.matrix }}
+        run: echo ${{ fromJSON(needs.job1.outputs.matrix) }}
