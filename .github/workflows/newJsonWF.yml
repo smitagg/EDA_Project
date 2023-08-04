@@ -22,4 +22,4 @@ jobs:
           echo ${{ toJSON(needs.job1.outputs.matrix) }}
           
       - name: print details                       
-        run: python createTask.py ${{ toJSON(needs.job1.outputs.matrix) }}
+        run: python src/createTask.py ${{ toJSON(needs.job1.outputs.matrix) }}
