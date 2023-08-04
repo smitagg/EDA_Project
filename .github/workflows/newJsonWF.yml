@@ -1,15 +1,20 @@
 name: print
-on: workflow_dispatch
+on: push
 env:
   continue: true
   time: 3
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - continue-on-error: ${{ fromJSON(env.continue) }}
-        timeout-minutes: ${{ fromJSON(env.time) }}
-        run: |
-          echo ${{ continue-on-error }}
-          echo ${{ timeout-minutes }}
-          
+      - id: set-matrix
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    env:
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+    steps:
+      - run: echo ${{ env.matrix }}
