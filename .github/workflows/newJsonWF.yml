@@ -10,6 +10,6 @@ jobs:
       - continue-on-error: ${{ fromJSON(env.continue) }}
         timeout-minutes: ${{ fromJSON(env.time) }}
         run: |
-          echo $continue-on-error
-          echo $timeout-minutes
+          echo ${{ continue-on-error }}
+          echo ${{ timeout-minutes }}
           
